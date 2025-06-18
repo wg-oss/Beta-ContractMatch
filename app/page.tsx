@@ -660,6 +660,12 @@ export default function App() {
               <MeetingManagementPage currentUser={currentUser as Contractor} allUsers={allUsers} />
             ) : (
               <>
+                <ContractorPreferences
+                  onPreferencesChange={handlePreferencesChange}
+                  specialties={specialties}
+                  initialOpen={!hasSeenPreferences && activeSection === "swipe"}
+                  onClose={() => setHasSeenPreferences(true)}
+                />
                 <div {...swipeHandlers} className="fixed left-0 right-0 top-0 bottom-[65px] overflow-hidden z-10">
                   <div
                     className="h-full transition-transform duration-500 ease-in-out"
@@ -667,14 +673,8 @@ export default function App() {
                   >
                     {contractorsData.map((contractor) => {
                       return (
-                        <div key={contractor.id} className="h-full flex items-center justify-center relative">
+                        <div key={contractor.id} className="h-full flex items-center justify-center">
                           {renderContractorCard(contractor)}
-                          <ContractorPreferences
-                            onPreferencesChange={handlePreferencesChange}
-                            specialties={specialties}
-                            initialOpen={!hasSeenPreferences && activeSection === "swipe"}
-                            onClose={() => setHasSeenPreferences(true)}
-                          />
                         </div>
                       )
                     })}
