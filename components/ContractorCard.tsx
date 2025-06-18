@@ -123,10 +123,10 @@ const ContractorCard: React.FC<ContractorCardProps> = ({ contractor, onSchedule 
         </div>
       </div>
 
-      {/* Reviews Modal */}
+      {/* Reviews Modal - Positioned relative to this specific card */}
       {showReviews && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
+          className="absolute inset-0 z-[60] flex items-center justify-center bg-black/60 px-4"
           onClick={() => setShowReviews(false)}
         >
           <div
